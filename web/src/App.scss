@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+  display: flex;
+  // flex-flow: row nowrap;
+  align-items: center;
+  height: 100vh;
+  padding: 0 10rem;
+  .wrapper{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center; 
+    justify-content: center; 
+    width: 100%;
+  }
+  h1{
+    font-weight: 400;
+  }
+  p{
+    padding: 0;
+    margin: 0;
+  }
+}
+.logo{
+  flex: 0.3 0;
+  min-width: 10rem;
+}
+.feed{
+  flex: 1 0;
+  min-width: 20rem;
+  align-self: stretch;
+  display: flex;
+  flex-flow: column;
+  .MuiSkeleton-text{
+    transform: scale(1, 0.9) !important
+  }
+}
+.alerts{
+  flex: 0.4 0;
+  // border: 1px solid black;
+  border-radius: 10px;
+  align-self: stretch;
+  background-color: rgba(100, 100, 100, 0.041);
+  // height: 100%;
+  h1{
+    margin: 1rem 0;
+  }
+  .message__box{
+    background-color: rgb(253, 253, 253);
+    margin: 1rem 2rem;
+    padding: 5px 1rem;
+    border-radius: 5px;
+    text-align: left;
+  }
+}
