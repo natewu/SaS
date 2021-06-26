@@ -1,0 +1,26 @@
+<annotation>
+	<folder>NewGuns</folder>
+	<filename>1 (39).jpg</filename>
+	<path>C:\Users\arspiedy\Desktop\Guns\NewGuns\1 (39).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>320</width>
+		<height>450</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>handgun</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>16</xmin>
+			<ymin>140</ymin>
+			<xmax>289</xmax>
+			<ymax>393</ymax>
+		</bndbox>
+	</object>
+</annotation>
