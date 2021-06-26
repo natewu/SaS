@@ -1,20 +1,52 @@
-import React from 'react'
-
-const alertList = [
-   {
-      text: "hello",
-      time: "1pm"
-   },
-   {
-      text: "2",
-      time: "2pm"
-   },
-]
+import React, { useEffect, useState } from 'react'
+import addNotification from 'react-push-notification';
 
 function Alerts() {
+
+   const [alertList, setAlertList] = useState([
+      {
+         text: "Rifle alert!",
+         time: "1pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "2pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "3pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+   ])
+   
+   const [recentAlert, setRecentAlert] = useState([]);
+
+   function pushAlert(alert){
+      addNotification({
+          title: 'Warning - ' + alert.time,
+          message: alert.text,
+          theme: 'darkblue',
+          native: true
+      });
+   }
+
+   useEffect(() => {
+      setRecentAlert(alertList[alertList.length - 1]);
+   }, [alertList])
+
+   useEffect(() => {
+      if(recentAlert.length !== 0){
+         pushAlert(recentAlert);
+         console.log(recentAlert)
+      }
+   }, [recentAlert])
+
    return (
       <div className="alerts">
-         <h1>Alerts</h1>
+         <h1 onClick={() => {pushAlert(recentAlert)}}>Alerts</h1>
          <div className="alert__box">
             <div className="messages">
                {alertList.map(message => 
