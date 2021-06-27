@@ -9,25 +9,19 @@ import * as cvstfjs from '@microsoft/customvision-tfjs';
 // const cocoSsd = require('@tensorflow-models/coco-ssd');
 
 const labelMap = {
-   'dog':{name:'gun', color:'red'},
-   2:{name:'rifle', color:'yellow'},
+   1:{name:'gun', color:'red'},
+   2:{name:'fire', color:'red'},
 }
 
-// Define a drawing function
 export const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx)=>{
    for(let i=0; i<=boxes.length; i++){
        if(boxes[i] && classes[i] && scores[i]>threshold){
-           // Extract variables
            const [y,x,height,width] = boxes[i]
            const text = classes[i]
-           
-           // Set styling
            ctx.strokeStyle = labelMap[classes]['color']
            ctx.lineWidth = 10
            ctx.fillStyle = 'white'
            ctx.font = '30px Arial'         
-           
-           // DRAW!!
            ctx.beginPath()
            ctx.fillText(labelMap[text]['name'] + ' - ' + Math.round(scores[i]*100)/100, x*imgWidth, y*imgHeight-10)
            ctx.rect(x*imgWidth, y*imgHeight, width*imgWidth/2, height*imgHeight/1.5);
@@ -78,26 +72,21 @@ function Feed() {
    };
  
    const detect = async (net) => {
-     // Check data is available
       if (
          typeof webcamRef.current !== "undefined" &&
          webcamRef.current !== null &&
          webcamRef.current.video.readyState === 4
          ) {
-         // Get Video Properties
+
          const video = webcamRef.current.video;
          const videoWidth = webcamRef.current.video.videoWidth;
          const videoHeight = webcamRef.current.video.videoHeight;
-   
-         // Set video width
          webcamRef.current.video.width = videoWidth;
          webcamRef.current.video.height = videoHeight;
-   
-         // Set canvas height and width
          canvasRef.current.width = videoWidth;
          canvasRef.current.height = videoHeight;
    
-         // 4. TODO - Make Detections
+       
          // const img = tf.browser.fromPixels(video)
          // const resized = tf.image.resizeBilinear(img, [416,416])
          // const casted = resized.cast('float32')
@@ -115,8 +104,6 @@ function Feed() {
          // Draw mesh
          const ctx = canvasRef.current.getContext("2d");
    
-         // 5. TODO - Update drawing utility
-         // drawSomething(obj, ctx)  
          // requestAnimationFrame(()=>{drawRect(boxes[0], classes, scores[0], 0.8, videoWidth, videoHeight, ctx)}); 
    
          // tf.dispose(img)
