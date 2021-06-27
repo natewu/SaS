@@ -20,6 +20,62 @@ function Alerts() {
          text: "Pistol detected!!!",
          time: "4pm"
       },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
    ])
    
    const [recentAlert, setRecentAlert] = useState([]);

@@ -33,10 +33,10 @@ function Feed() {
          ? (<Skeleton style={{flex:1, alignSelf:"stretch", margin:" 0 2rem"}}/>)
          : (<Webcam
             audio={false}
-            height={"auto"}
+            // height={"auto"}
             screenshotFormat="image/jpeg"
             width={"90%"}
-            style={{borderRadius:"10px"}}
+            style={{borderRadius:"10px", height: "35rem"}}
             />)
          }
       </div>

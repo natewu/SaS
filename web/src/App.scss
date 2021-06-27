@@ -5,12 +5,22 @@
   align-items: center;
   height: 100vh;
   padding: 0 10rem;
+  justify-content: center;
   .wrapper{
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .content{
     display: flex;
     flex-flow: row nowrap;
     align-items: center; 
     justify-content: center; 
     width: 100%;
+    flex: 0 0 auto;
+    max-height: 80vh;
   }
   h1{
     font-weight: 400;
@@ -18,6 +28,7 @@
   p{
     padding: 0;
     margin: 0;
+    font-size: 1.3vmin;
   }
 }
 .logo{
@@ -30,17 +41,25 @@
   align-self: stretch;
   display: flex;
   flex-flow: column;
+  align-items: center;
+  justify-content: center;
   .MuiSkeleton-text{
     transform: scale(1, 0.9) !important
   }
+  video{
+    height: auto !important;
+    width: 90%;
+  }
 }
 .alerts{
-  flex: 0.4 0;
-  // border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  flex: 0.4;
   border-radius: 10px;
-  align-self: stretch;
   background-color: rgba(100, 100, 100, 0.041);
-  // height: 100%;
+  position: relative;
+  overflow: hidden;
+  
   h1{
     margin: 1rem 0;
   }
@@ -50,5 +69,14 @@
     padding: 5px 1rem;
     border-radius: 5px;
     text-align: left;
+  }
+  .alert__box{
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  .messages{
+    flex: 0 0 auto;
+    max-height: 20rem;
+    overflow-y: scroll;
   }
 }
