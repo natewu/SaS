@@ -5,11 +5,8 @@ import * as tf from "@tensorflow/tfjs";
 import * as cvstfjs from '@microsoft/customvision-tfjs';
 
 const labelMap = {
-   1:{name:'Hello', color:'red'},
-   2:{name:'Thank You', color:'yellow'},
-   3:{name:'I Love You', color:'lime'},
-   4:{name:'Yes', color:'blue'},
-   5:{name:'No', color:'purple'},
+   1:{name:'Gun', color:'red'},
+   2:{name:'Rifle', color:'yellow'},
 }
 
 // Define a drawing function
@@ -68,9 +65,9 @@ function Feed() {
      // 3. TODO - Load network 
      // e.g. const net = await cocossd.load();
      // https://tensorflowjsrealtimemodel.s3.au-syd.cloud-object-storage.appdomain.cloud/model.json
-   //   const net = await tf.loadGraphModel("/Model/model.json")
-   let net = new cvstfjs.ClassificationModel();
-   await net.loadModelAsync("/Model/model.json");
+     const net = await tf.loadGraphModel("/Model/model.json")
+   // let net = new cvstfjs.ClassificationModel();
+   // await net.loadModelAsync("/Model/model.json");
      //  Loop and detect hands
      setInterval(() => {
        detect(net);
