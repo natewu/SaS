@@ -14,7 +14,9 @@
     justify-content: center;
   }
   .content{
-    display: flex;
+    // display: flex;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1.5fr;
     flex-flow: row nowrap;
     align-items: center; 
     justify-content: center; 
@@ -77,6 +79,7 @@
   .messages{
     flex: 0 0 auto;
     max-height: 20rem;
-    overflow-y: scroll;
+    height: 20rem;
+    overflow-y: auto;
   }
 }

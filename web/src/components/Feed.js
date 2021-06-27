@@ -4,9 +4,9 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import * as tf from "@tensorflow/tfjs";
 import * as cvstfjs from '@microsoft/customvision-tfjs';
 
-require('@tensorflow/tfjs-backend-cpu');
-require('@tensorflow/tfjs-backend-webgl');
-const cocoSsd = require('@tensorflow-models/coco-ssd');
+// require('@tensorflow/tfjs-backend-cpu');
+// require('@tensorflow/tfjs-backend-webgl');
+// const cocoSsd = require('@tensorflow-models/coco-ssd');
 
 const labelMap = {
    'dog':{name:'gun', color:'red'},
@@ -68,12 +68,12 @@ function Feed() {
    const runCoco = async () => {
    //   const net = await tf.loadGraphModel("/Model/model.json")
    // let net = new cvstfjs.ClassificationModel();
-   let net = await cocoSsd.load();
+   // let net = await cocoSsd.load();
 
    // await net.loadModelAsync("/Model/model.json");
      //  Loop and detect hands
      setInterval(() => {
-       detect(net);
+      //  detect(net);
      }, 1206.7);
    };
  
