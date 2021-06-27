@@ -4,9 +4,13 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import * as tf from "@tensorflow/tfjs";
 import * as cvstfjs from '@microsoft/customvision-tfjs';
 
+require('@tensorflow/tfjs-backend-cpu');
+require('@tensorflow/tfjs-backend-webgl');
+const cocoSsd = require('@tensorflow-models/coco-ssd');
+
 const labelMap = {
-   1:{name:'Gun', color:'red'},
-   2:{name:'Rifle', color:'yellow'},
+   'dog':{name:'gun', color:'red'},
+   2:{name:'rifle', color:'yellow'},
 }
 
 // Define a drawing function
@@ -18,7 +22,7 @@ export const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight,
            const text = classes[i]
            
            // Set styling
-           ctx.strokeStyle = labelMap[text]['color']
+           ctx.strokeStyle = labelMap[classes]['color']
            ctx.lineWidth = 10
            ctx.fillStyle = 'white'
            ctx.font = '30px Arial'         
@@ -59,19 +63,18 @@ function Feed() {
 
       
    })
-
+   
    // Main function
    const runCoco = async () => {
-     // 3. TODO - Load network 
-     // e.g. const net = await cocossd.load();
-     // https://tensorflowjsrealtimemodel.s3.au-syd.cloud-object-storage.appdomain.cloud/model.json
-     const net = await tf.loadGraphModel("/Model/model.json")
+   //   const net = await tf.loadGraphModel("/Model/model.json")
    // let net = new cvstfjs.ClassificationModel();
+   let net = await cocoSsd.load();
+
    // await net.loadModelAsync("/Model/model.json");
      //  Loop and detect hands
      setInterval(() => {
        detect(net);
-     }, 106.7);
+     }, 1206.7);
    };
  
    const detect = async (net) => {
@@ -95,29 +98,32 @@ function Feed() {
          canvasRef.current.height = videoHeight;
    
          // 4. TODO - Make Detections
-         const img = tf.browser.fromPixels(video)
-         const resized = tf.image.resizeBilinear(img, [416,416])
-         const casted = resized.cast('float32')
-         const expanded = casted.expandDims(0)
-         const obj = await net.executeAsync(expanded)
+         // const img = tf.browser.fromPixels(video)
+         // const resized = tf.image.resizeBilinear(img, [416,416])
+         // const casted = resized.cast('float32')
+         // const expanded = casted.expandDims(0)
+         // const obj = await net.executeAsync(expanded)
+         const obj = await net.detect(video)
          console.log(obj)
    
-         // const boxes = await obj[1].array()
-         // const classes = await obj[2].array()
-         // const scores = await obj[4].array()
+         // const boxes = await obj[0].bbox
+         // console.log(boxes)
+         // const classes = await obj[0].class
+         //  console.log(classes)
+         // const scores = await obj[0].score
          
          // Draw mesh
          const ctx = canvasRef.current.getContext("2d");
    
          // 5. TODO - Update drawing utility
          // drawSomething(obj, ctx)  
-         // requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)}); 
+         // requestAnimationFrame(()=>{drawRect(boxes[0], classes, scores[0], 0.8, videoWidth, videoHeight, ctx)}); 
    
-         tf.dispose(img)
-         tf.dispose(resized)
-         tf.dispose(casted)
-         tf.dispose(expanded)
-         tf.dispose(obj)
+         // tf.dispose(img)
+         // tf.dispose(resized)
+         // tf.dispose(casted)
+         // tf.dispose(expanded)
+         // tf.dispose(obj)
  
       }
    };
