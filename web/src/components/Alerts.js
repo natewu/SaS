@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import addNotification from 'react-push-notification';
 
 function Alerts() {
-
+   var time = new Date();
+   var date = time.toLocaleTimeString('en-GB', { hour12: true, hour: "2-digit", minute: "2-digit" });
    const [alertList, setAlertList] = useState([
       {
          text: "Rifle alert!",
@@ -76,11 +77,20 @@ function Alerts() {
          text: "Pistol detected!!!",
          time: "4pm"
       },
+      {
+         text: "Pistol detected!!!",
+         time: "4pm"
+      },
+      {
+         text: "Pistol detected!!!",
+         time: date
+      },
    ])
    
    const [recentAlert, setRecentAlert] = useState([]);
 
    function pushAlert(alert){
+      console.log(recentAlert)
       addNotification({
           title: 'Warning - ' + alert.time,
           message: alert.text,
