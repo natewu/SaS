@@ -4,6 +4,8 @@
 # SaS - Crime and Hazard Detection
 Safe and Sound is a crime and hazard detection web app that utilizes machine learning to detect firearms/natural disasters/etc.
 
+- NologyHacks 2021 Winner
+
 # Built with
 - React
 - JavaScript
